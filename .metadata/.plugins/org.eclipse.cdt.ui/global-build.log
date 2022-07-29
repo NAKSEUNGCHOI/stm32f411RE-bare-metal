@@ -1,0 +1,132 @@
+02:06:31 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/MPU6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/MPU6050.d" -MT"Core/Src/MPU6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/MPU6050.o"
+arm-none-eabi-gcc "../Core/Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/i2c.d" -MT"Core/Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/i2c.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/MPU6050.c: In function 'MPU6050_init':
+../Core/Src/MPU6050.c:37:2: warning: implicit declaration of function 'I2C1_init' [-Wimplicit-function-declaration]
+   37 |  I2C1_init();
+      |  ^~~~~~~~~
+../Core/Src/i2c.c: In function 'I2C1_byteRead':
+../Core/Src/i2c.c:110:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  110 |  volatile int temp; // This is going to be used to clear status registers by reading them.
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstRead':
+../Core/Src/i2c.c:204:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  204 |  volatile int temp;
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstWrite':
+../Core/Src/i2c.c:307:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  307 |  volatile int temp;
+      |               ^~~~
+arm-none-eabi-gcc -o "21_i2c_MPU6050.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chlsk\OneDrive\Desktop\STM32Nucleo-f411RE\21_i2c_MPU6050\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c_MPU6050.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_i2c_MPU6050.elf
+ 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+arm-none-eabi-objdump -h -S  21_i2c_MPU6050.elf  > "21_i2c_MPU6050.list"
+   text	   data	    bss	    dec	    hex	filename
+   4300	     12	   1596	   5908	   1714	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_i2c_MPU6050.list
+ 
+02:06:34 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4300	     12	   1596	   5908	   1714	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+02:07:09 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/i2c.d" -MT"Core/Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/i2c.o"
+../Core/Src/i2c.c: In function 'I2C1_byteRead':
+../Core/Src/i2c.c:110:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  110 |  volatile int temp; // This is going to be used to clear status registers by reading them.
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstRead':
+../Core/Src/i2c.c:204:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  204 |  volatile int temp;
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstWrite':
+../Core/Src/i2c.c:307:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  307 |  volatile int temp;
+      |               ^~~~
+arm-none-eabi-gcc -o "21_i2c_MPU6050.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chlsk\OneDrive\Desktop\STM32Nucleo-f411RE\21_i2c_MPU6050\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c_MPU6050.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_i2c_MPU6050.elf
+ 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+arm-none-eabi-objdump -h -S  21_i2c_MPU6050.elf  > "21_i2c_MPU6050.list"
+   text	   data	    bss	    dec	    hex	filename
+   4300	     12	   1596	   5908	   1714	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_i2c_MPU6050.list
+ 
+02:07:57 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/MPU6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/MPU6050.d" -MT"Core/Src/MPU6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/MPU6050.o"
+arm-none-eabi-gcc "../Core/Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/i2c.d" -MT"Core/Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/i2c.o"
+../Core/Src/MPU6050.c: In function 'MPU6050_init':
+../Core/Src/MPU6050.c:37:2: warning: implicit declaration of function 'I2C1_init' [-Wimplicit-function-declaration]
+   37 |  I2C1_init();
+      |  ^~~~~~~~~
+../Core/Src/i2c.c: In function 'I2C1_byteRead':
+../Core/Src/i2c.c:110:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  110 |  volatile int temp; // This is going to be used to clear status registers by reading them.
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstRead':
+../Core/Src/i2c.c:203:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  203 |  volatile int temp;
+      |               ^~~~
+../Core/Src/i2c.c: In function 'I2C1_burstWrite':
+../Core/Src/i2c.c:306:15: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+  306 |  volatile int temp;
+      |               ^~~~
+arm-none-eabi-gcc -o "21_i2c_MPU6050.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chlsk\OneDrive\Desktop\STM32Nucleo-f411RE\21_i2c_MPU6050\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c_MPU6050.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_i2c_MPU6050.elf
+ 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+arm-none-eabi-objdump -h -S  21_i2c_MPU6050.elf  > "21_i2c_MPU6050.list"
+   text	   data	    bss	    dec	    hex	filename
+   4308	     12	   1596	   5916	   171c	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_i2c_MPU6050.list
+ 
+02:08:24 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/MPU6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/MPU6050.d" -MT"Core/Src/MPU6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/MPU6050.o"
+../Core/Src/MPU6050.c: In function 'MPU6050_init':
+../Core/Src/MPU6050.c:37:2: warning: implicit declaration of function 'I2C1_init' [-Wimplicit-function-declaration]
+   37 |  I2C1_init();
+      |  ^~~~~~~~~
+arm-none-eabi-gcc -o "21_i2c_MPU6050.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chlsk\OneDrive\Desktop\STM32Nucleo-f411RE\21_i2c_MPU6050\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c_MPU6050.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_i2c_MPU6050.elf
+ 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+arm-none-eabi-objdump -h -S  21_i2c_MPU6050.elf  > "21_i2c_MPU6050.list"
+   text	   data	    bss	    dec	    hex	filename
+   4308	     12	   1596	   5916	   171c	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_i2c_MPU6050.list
+ 
+02:08:43 **** Incremental Build of configuration Debug for project 21_i2c_MPU6050 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/MPU6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/MPU6050.d" -MT"Core/Src/MPU6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/MPU6050.o"
+../Core/Src/MPU6050.c: In function 'MPU6050_init':
+../Core/Src/MPU6050.c:37:2: warning: implicit declaration of function 'I2C1_init' [-Wimplicit-function-declaration]
+   37 |  I2C1_init();
+      |  ^~~~~~~~~
+arm-none-eabi-gcc -o "21_i2c_MPU6050.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chlsk\OneDrive\Desktop\STM32Nucleo-f411RE\21_i2c_MPU6050\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="21_i2c_MPU6050.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 21_i2c_MPU6050.elf
+ 
+arm-none-eabi-size   21_i2c_MPU6050.elf 
+arm-none-eabi-objdump -h -S  21_i2c_MPU6050.elf  > "21_i2c_MPU6050.list"
+   text	   data	    bss	    dec	    hex	filename
+   4308	     12	   1596	   5916	   171c	21_i2c_MPU6050.elf
+Finished building: default.size.stdout
+ 
+Finished building: 21_i2c_MPU6050.list
+ 

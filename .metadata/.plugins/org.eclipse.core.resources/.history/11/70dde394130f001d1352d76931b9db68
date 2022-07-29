@@ -1,0 +1,14 @@
+/*
+ * MPU6050.h
+ *	@brief source file for i2c
+ *  @author Nakseung Choi
+ *  @date 07-28-2022
+ */
+
+
+#ifndef INC_MPU6050_H_
+#define INC_MPU6050_H_
+
+#include "i2c.h"
+
+#endif /* INC_MPU6050_H_ */
