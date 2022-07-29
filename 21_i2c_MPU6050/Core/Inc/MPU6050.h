@@ -1,6 +1,6 @@
-/*
+/**
  * MPU6050.h
- *	@brief source file for i2c
+ *	@brief header file for MPU6050
  *  @author Nakseung Choi
  *  @date 07-28-2022
  */

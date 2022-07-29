@@ -1,4 +1,4 @@
-/*
+/**
  * i2c.h
  *	@brief header file for i2c
  * 	@author Nakseung Choi

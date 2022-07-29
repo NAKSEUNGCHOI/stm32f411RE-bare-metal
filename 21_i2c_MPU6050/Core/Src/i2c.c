@@ -1,4 +1,4 @@
-/*
+/**
  * i2c.c
  *	@brief source file for i2c
  *  @author Nakseung Choi
@@ -170,22 +170,21 @@ void I2C1_byteRead(char saddr, char maddr, char* data){
  * @param data pointer to store to data that you want to read.
  * @step followed:
  *
- * 1. Wait until bus is not busy (while it is busy, get stuck in the while loop.)
- * 2. Enable Start bit
- * 3. Wait until start flag is set.
- * 4. Transmit the slave address + Write 0 at bit 0
- * 5. wait until address flag is set
- * 6. Clear status registers by reading them
- * 7. wait until transmitter gets empty
- * 8. send memory address
- * 9. wait until transmitter gets empty
- * 10. Enable re-start bit
- * 11. wait until start flag is set
- * 12. transmit slave address + Read 1 at bit 0
- * 13. wait until address flag is set
- * 14. Clear address flag
- * 15. Enable Acknowledge bit
- * 16. If one byte is left,
+ * 1. Enable Start bit
+ * 2. Wait until start flag is set.
+ * 3. Transmit the slave address + Write 0 at bit 0
+ * 4. wait until address flag is set
+ * 5. Clear status registers by reading them
+ * 6. wait until transmitter gets empty
+ * 7. send memory address
+ * 8. wait until transmitter gets empty
+ * 9. Enable re-start bit
+ * 10. wait until start flag is set
+ * 11. transmit slave address + Read 1 at bit 0
+ * 12. wait until address flag is set
+ * 13. Clear address flag
+ * 14. Enable Acknowledge bit
+ * 15. If one byte is left,
  *
  *     1. disable Acknowledge bit
  *     2. Enable stop bit
@@ -193,7 +192,7 @@ void I2C1_byteRead(char saddr, char maddr, char* data){
  *     4. read data from DR
  *     5. break when n = 1
  *
- * 17. if data is more than one byte, keep reading.
+ * 16. if data is more than one byte, keep reading.
  *
  * 	   1. wait for RXNE flag to be set
  * 	   2. Read data from DR
@@ -203,54 +202,53 @@ void I2C1_burstRead(char saddr, char maddr, int n, char* data){
 	volatile int temp;
 
 	/*1. Wait until bus is not busy (while it is busy, get stuck in the while loop.)*/
-	while(I2C1->SR2 & I2C_SR2_BUSY){}
+	//while(I2C1->SR2 & I2C_SR2_BUSY){}
 
-	/*2. Enable Start bit*/
+	/*1. Enable Start bit*/
 	I2C1->CR1 |= I2C_CR1_START;
 
-	/*3. Wait until start flag is set. */
+	/*2. Wait until start flag is set. */
 	while(!(I2C1->SR1 & I2C_SR1_SB)){}
 
-	/*4. Transmit the slave address + Write 0 at bit 0 */
+	/*3. Transmit the slave address + Write 0 at bit 0 */
 	I2C1->DR = saddr;
 
-	/*5. wait until address flag is set */
+	/*4. wait until address flag is set */
 	while(!(I2C1->SR1 & I2C_SR1_ADDR)){}
 
-
-	/*6. Clear status registers by reading them*/
+	/*5. Clear status registers by reading them*/
 	temp = I2C1->SR2 | I2C1->SR1;
 
-	/*7. wait until transmitter gets empty*/
+	/*6. wait until transmitter gets empty*/
 	while(!(I2C1->SR1 & I2C_SR1_TXE)){}
 
-	/*8. send memory address */
+	/*7. send memory address */
 	I2C1->DR = maddr;
 
-	/*9. wait until transmitter gets empty*/
+	/*8. wait until transmitter gets empty*/
 	while(!(I2C1->SR1 & I2C_SR1_TXE)){}
 
-	/*10. Enable re-start bit */
+	/*9. Enable re-start bit */
 	I2C1->CR1 |= I2C_CR1_START;
 
-	/*11. wait until start flag is set */
+	/*10. wait until start flag is set */
 	while(!(I2C1->SR1 & I2C_SR1_SB)){}
 
-	/*12. transmit slave address + Read 1 at bit 0 */
+	/*11. transmit slave address + Read 1 at bit 0 */
 	I2C1->DR = saddr + 0x01;
 
-	/*13. wait until address flag is set */
+	/*12. wait until address flag is set */
 	while(!(I2C1->SR1 & I2C_SR1_ADDR)){}
 
-	/*14. Clear address flag*/
+	/*13. Clear address flag*/
 	temp = I2C1->SR2 | I2C1->SR1;
 
-	/*15. Enable Acknowledge bit*/
+	/*14. Enable Acknowledge bit*/
 	I2C1->CR1 |= I2C_CR1_ACK;
 
 	while(n > 0U){
 
-		/*16. check if one byte is left*/
+		/*15. check if one byte is left*/
 		if(n == 1U){
 
 			/*1. disable Acknowledge bit*/
@@ -268,7 +266,7 @@ void I2C1_burstRead(char saddr, char maddr, int n, char* data){
 			/*5. break when n = 1*/
 			break;
 
-		/*17. if data is more than one byte, keep reading. */
+		/*16. if data is more than one byte, keep reading. */
 		}else{
 			/*1. wait for RXNE flag to be set*/
 			while(!(I2C1->SR1 & I2C_SR1_RXNE)){}
@@ -290,44 +288,44 @@ void I2C1_burstRead(char saddr, char maddr, int n, char* data){
  * @param data pointer to hold the data you want to write to the slave.
  * @step followed:
  *
- * 1. Wait until bus is not busy (while it is busy, get stuck in the while loop.)
- * 2. Enable Start bit
- * 3. Wait until start flag is set.
- * 4. Transmit the slave address + Write 0 at bit 0
- * 5. wait until address flag is set
- * 6. Clear address flag
- * 7. wait until transmitter gets empty
- * 8. send memory address
- * 9. wait until data register is empty
- * 10. Transmit memory address
- * 11. Wait until BTF (byte transfer finished) is set
+ * 1. Enable Start bit
+ * 2. Wait until start flag is set.
+ * 3. Transmit the slave address + Write 0 at bit 0
+ * 4. wait until address flag is set
+ * 5. Clear address flag
+ * 6. wait until transmitter gets empty
+ * 7. send memory address
+ * 8. wait until data register is empty
+ * 9. Transmit memory address
+ * 10. Wait until BTF (byte transfer finished) is set
  */
 void I2C1_burstWrite(char saddr, char maddr, int n, char* data){
 	volatile int temp;
+	static int count = 0;
 
-	/*1. Wait until bus is not busy (while it is busy, get stuck in the while loop.)*/
-	while(I2C1->SR2 & I2C_SR2_BUSY){}
-
-	/*2. Enable Start bit*/
+	/*1. Enable Start bit*/
 	I2C1->CR1 |= I2C_CR1_START;
 
-	/*3. Wait until start flag is set. */
+	/*2. Wait until start flag is set. */
 	while(!(I2C1->SR1 & I2C_SR1_SB)){}
 
-	/*4. Transmit the slave address + Write 0 at bit 0 */
+	/*3. Transmit the slave address + Write 0 at bit 0 */
 	I2C1->DR = saddr;
 
-	/*5. wait until address flag is set */
+	/*4. wait until address flag is set */
 	while(!(I2C1->SR1 & I2C_SR1_ADDR)){}
 
-	/*6. Clear address flag*/
-	temp = I2C1->SR2;
+	/*5. Clear address flag*/
+	temp = I2C1->SR2 | I2C1->SR1;
 
-	/*7. wait until transmitter gets empty*/
+	/*6. wait until transmitter gets empty*/
 	while(!(I2C1->SR1 & I2C_SR1_TXE)){}
 
-	/*8. send memory address */
+	/*7. send memory address */
 	I2C1->DR = maddr;
+
+	/*8. Wait until BTF (byte transfer finished) is set */
+	while(!(I2C1->SR1 & I2C_SR1_BTF)){}
 
 	for(int i = 0; i < n; i++){
 
@@ -339,5 +337,7 @@ void I2C1_burstWrite(char saddr, char maddr, int n, char* data){
 
 		/*11. Wait until BTF (byte transfer finished) is set */
 		while(!(I2C1->SR1 & I2C_SR1_BTF)){}
+
 	}
+	//count++;
 }
