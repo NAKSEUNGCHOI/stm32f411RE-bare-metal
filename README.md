@@ -16,5 +16,6 @@
 - Download your board's header file so that you don't have to define all addresses every time you need to use them.
 
 ## Release Note
+- <pre> Working on SPI (waiting for sensor to come)                                  July-30-2022</pre>
 - <pre> debugging I2C serial communication for MPU6050                               July-29-2022</pre>
 - <pre> Started                                                                      July-29-2022</pre>
