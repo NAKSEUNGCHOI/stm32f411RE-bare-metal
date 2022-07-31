@@ -6,7 +6,7 @@
 ## Description
 - STM32f411RE Nucleo Bare-metal programming.
 - These should be good source codes/examples for those who study bare-metal programming with any STM32 board.
-- planning to implement I2C, SPI, CAN, ADC, and DAC with DMA and RTOS.
+- Device Drivers (planning to implement I2C, SPI, CAN, ADC, and DAC with DMA and RTOS.)
 
 ## Getting started
 
